@@ -1,7 +1,6 @@
 # Item Catalog
 ## Introduction
-<p>This is a python module that creates a website and JSON API for a list of items grouped into a category. Users can edit or delete items they've creating. Adding items, deleteing items and editing items requiring logging in with Google+ or Facebook.</p>
-
+<p>This is a python module that queries a database for items on restaurant menus and then dynamically generates complete menus in the form of web pages and API endpoints. This module uses Flask framework to develop the application. Users can edit or delete items they've created. Adding, deleteing and editing items require oauth2 authorization.</p>
 <h2>Instructions</h2>
 <ul type="disc">
   <li><h3>Setup</h3></li>
