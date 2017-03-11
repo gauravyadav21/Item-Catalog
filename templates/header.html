@@ -1,0 +1,21 @@
+<div class="row top-menu">
+   <div class="col-md-6">
+      <a href="{{url_for('showRestaurants')}}">
+      <button class="btn btn-default head">
+      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home
+      </button>
+      </a>
+   </div>
+   <div class="col-md-6 text-right dropdown">
+      {% if 'username' not in session %}
+      <a href="{{url_for('showLogin')}}">
+      <button class="btn btn-default login"> Login
+      </button>
+      </a>
+      {% else %}
+      <button class=" btn btn-default login dropdown-toggle" data-toggle="dropdown">{{session['username']}}
+      <span class="caret"></span></button>
+      <button class="btn logout btn-default pull-right dropdown-menu" onclick="window.location.href='{{url_for('gdisconnect')}}';">Logout</button>
+      {% endif %}
+   </div>
+</div>
