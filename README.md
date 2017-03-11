@@ -17,7 +17,7 @@
    <p><b>Windows:</b> Use the Git Bash program (installed with Git) to get a Unix-style terminal.<br>
    <b>Other systems:</b> Use your favorite terminal program.</p>
   </ul>
-  <li><h3>Set up a Google Plus auth application</h3></li>
+  <li><h3>Set up a Google Plus oauth application</h3></li>
   <ul type="disc">
    <li>Go to https://console.developers.google.com/project and login with Google.</li>
    <li>Create a new project.</li>
