@@ -1,4 +1,5 @@
-<h2>Introduction</h2>
+# Item Catalog
+## Introduction
 <p>This is a python module that creates a website and JSON API for a list of items grouped into a category. Users can edit or delete items they've creating. Adding items, deleteing items and editing items requiring logging in with Google+ or Facebook.</p>
 
 <h2>Instructions</h2>
