@@ -40,6 +40,16 @@
             </span>
          </center>
       </div>
+      <center>
+      <div class="fb-login-button padding-top"
+           data-max-rows="1"
+           data-size="xlarge"
+           data-show-faces="false"
+           data-auto-logout-link="false"
+           data-scope="public_profile,email"
+           onlogin="sendTokenToServer();">Sign In
+      </div>
+      </center>
    </div>
 </div>
 <script>
@@ -71,5 +81,59 @@
          }
 
      }); } }
+</script>
+
+<!--FACEBOOK SIGN IN -->
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '293289237757232',
+    cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+// Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function sendTokenToServer() {
+    var access_token = FB.getAuthResponse()['accessToken'];
+    console.log(access_token)
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+     $.ajax({
+      type: 'POST',
+      url: '/fbconnect?state={{STATE}}',
+      processData: false,
+      data: access_token,
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response if necessary.
+        if (result) {
+          $('#result').html('<center>Login Successful!</br>'+ result + '</br>Redirecting...</center>')
+         setTimeout(function() {
+          window.location.href = "/restaurant";
+         }, 4000);
+
+      } else {
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+         }
+      }
+
+  });
+    });
+  }
+
 </script>
 {% endblock %}
